@@ -18,13 +18,18 @@
 
 ## 📌 Overview
 
-OBandwidth is a security and privacy tool from the OwlSec suite.
+OBandwidth measures network throughput on Linux. It samples per-interface traffic from /proc/net/dev, keeps a history with live sparkline graphs, and grades link health based on saturation, errors and drops. It can also diff offline /proc/net/dev snapshots, run a loopback TCP throughput test and rank top talkers from ss or netstat output.
 
 ---
 
 ## ✨ Features
 
-- Standalone executable, no Python installation needed.
+- Per-interface RX/TX rates from /proc/net/dev with configurable interval and sample count
+- Live sparkline graphs and throughput history
+- Link-health grading for saturation, errors and drops
+- Offline mode: diff two /proc/net/dev snapshots to calculate rates
+- Loopback TCP throughput test with configurable size and chunk
+- Top-talker ranking from ss/netstat output; reports in TXT / Markdown / JSON / CSV / SARIF
 
 ---
 
@@ -38,8 +43,14 @@ OBandwidth is a security and privacy tool from the OwlSec suite.
 ## 🚀 Usage
 
 ```bash
-./OBandwidth
+./OBandwidth                                 # interactive menu
+./OBandwidth --count 5 --interval 2 --format md
+./OBandwidth --proc a.txt --proc2 b.txt --format json
+./OBandwidth --test --size 512 --chunk 128
+./OBandwidth --talkers ss.txt
 ```
+
+Run `./OBandwidth --help` for the full list of options.
 
 ---
 
